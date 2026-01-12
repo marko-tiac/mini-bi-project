@@ -1,0 +1,54 @@
+table MyMeasures
+	lineageTag: ab776af6-2000-41e2-9309-1505e276dcf0
+
+	measure 'Net Sales' = SUM(FactSale[NetSales])
+		lineageTag: d5dca21b-348a-49ed-9a9a-1bbb7ffa471a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Sales' = SUM(FactSale[GrossSales])
+		lineageTag: 5ef11ef7-e102-4fb2-94b6-8c2e632dca41
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Quantity = SUM('FactSale'[Quantity])
+		formatString: 0
+		lineageTag: 3e0168ea-31be-4284-a73c-01fd6f25840b
+
+	measure 'Avg Price' = DIVIDE([Net Sales], [Quantity])
+		lineageTag: 63439183-018f-4123-bee8-ef5a7f2878f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Sales LY' = CALCULATE([Net Sales], SAMEPERIODLASTYEAR(DimDate[Date]))
+		lineageTag: 56d92083-da71-4ef0-9e9a-2df915617773
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY %' =
+			
+			IF(
+			    ISBLANK([Net Sales LY]),
+			    BLANK(),
+			    DIVIDE(
+			        [Net Sales] - [Net Sales LY],
+			        [Net Sales LY]
+			    )
+			)
+		formatString: 0
+		lineageTag: da498630-e2a6-40f8-8256-60e39e3ec6b0
+
+	partition MyMeasures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

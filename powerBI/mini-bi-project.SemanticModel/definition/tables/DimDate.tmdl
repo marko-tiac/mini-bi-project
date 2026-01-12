@@ -1,0 +1,97 @@
+table DimDate
+	lineageTag: c3b56799-25de-443e-a4c0-a17a5f9ab3c3
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 4fdbe360-a4b3-4c10-9de3-1359b49dbfaf
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DayOfWeekNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 031b8b6f-d3dc-4f2c-a0a4-f64c7435625f
+		summarizeBy: sum
+		sourceColumn: DayOfWeekNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 09b0552b-a623-4db4-a57a-2c3b371b7666
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: e64dadc5-f775-401c-afe5-14b777860ce7
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 1eaa4215-8080-40e9-8d64-23c5ca04c90e
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 15188d02-057c-4893-9c52-05818172873c
+		summarizeBy: none
+		sourceColumn: DayOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekName
+		dataType: string
+		lineageTag: 70ff555f-a7da-4f44-978f-bfd88c9f6ca5
+		summarizeBy: none
+		sourceColumn: DayOfWeekName
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Year Hierarchy'
+		lineageTag: a5d2d731-0ecd-44ab-949b-26aecee74a60
+
+		level Year
+			lineageTag: e7cacdb7-0f87-4d33-8263-e3dd7f707caa
+			column: Year
+
+		level MonthName
+			lineageTag: fab8b561-eed1-4b57-97dd-2774a4421af0
+			column: MonthName
+
+		level DayOfMonth
+			lineageTag: e4a55262-aa68-4716-8bcd-8e8c560e16f5
+			column: DayOfMonth
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost"),
+				    WideWorldImportersDW = Source{[Name="WideWorldImportersDW"]}[Data],
+				    Analytics_vw_DimDate = WideWorldImportersDW{[Schema="Analytics",Item="vw_DimDate"]}[Data]
+				in
+				    Analytics_vw_DimDate
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

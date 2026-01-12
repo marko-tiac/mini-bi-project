@@ -1,0 +1,78 @@
+table DimProduct
+	lineageTag: 91df541b-9750-4916-959e-810e7c21adc7
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 88843b93-26be-4ece-a5ba-00d7f56d93df
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: 310f4c17-e6a5-472a-b35a-92804601f1a0
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: db329011-6dd7-4e05-91fb-e3f61f7d0b2d
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: 6bae17ff-d569-4ad3-a2cb-a3a342c6d18c
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column Size
+		dataType: string
+		lineageTag: 88c3f966-d921-4633-b613-06e47167f31a
+		summarizeBy: none
+		sourceColumn: Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: ede53fa3-85bd-4771-8096-007187b8de6d
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RRP
+		dataType: double
+		lineageTag: b7e2fda0-5b51-41b8-af70-28d946327271
+		summarizeBy: none
+		sourceColumn: RRP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("localhost"),
+				    WideWorldImportersDW = Source{[Name="WideWorldImportersDW"]}[Data],
+				    Analytics_vw_DimProduct = WideWorldImportersDW{[Schema="Analytics",Item="vw_DimProduct"]}[Data]
+				in
+				    Analytics_vw_DimProduct
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
