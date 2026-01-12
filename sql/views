@@ -1,0 +1,48 @@
+--DimCustomer
+CREATE OR ALTER VIEW Analytics.vw_DimCustomer
+AS
+SELECT
+    c.[Customer Key]      AS CustomerKey,
+    c.[Customer]          AS CustomerName,
+    c.[Primary Contact]   AS PrimaryContact,
+    c.[Category]          AS CustomerCategory,
+    c.[Postal Code]       AS PostalCode
+FROM Dimension.Customer c;
+
+--dimDate
+CREATE OR ALTER VIEW Analytics.vw_DimDate AS
+SELECT
+  d.[Date]                                                  AS [Date],
+  YEAR(d.[Date])                                            AS Year,
+  MONTH(d.[Date])                                           AS MonthNumber,
+  DATENAME(MONTH, d.[Date])                                 AS MonthName,
+  DAY(d.[Date])                                             AS DayOfMonth,
+  ((DATEPART(WEEKDAY, d.[Date]) + @@DATEFIRST - 2) % 7) + 1 AS DayOfWeekNumber,
+  DATENAME(WEEKDAY, d.[Date])                               AS DayOfWeekName
+FROM Dimension.[Date] d;
+
+--dimProduct
+CREATE OR ALTER VIEW Analytics.vw_DimProduct
+AS
+SELECT
+    p.[Stock Item Key]             AS ProductKey,
+    p.[Stock Item]                 AS ProductName,
+    p.[Brand]                      AS Brand,
+    p.[Color]                      AS Color,
+    p.[Size]                       AS Size,
+    p.[Unit Price]                 AS UnitPrice,
+    p.[Recommended Retail Price]   AS RRP
+FROM Dimension.[Stock Item] p;
+
+--factSales
+CREATE OR ALTER VIEW Analytics.vw_FactSale
+AS
+SELECT
+    f.[Invoice Date Key]    AS DateKey,
+    f.[Customer Key]        AS CustomerKey,
+    f.[Stock Item Key]      AS ProductKey,
+    f.[Quantity]            AS Quantity,
+    f.[Total Excluding Tax] AS NetSales,
+    f.[Tax Amount]          AS TaxAmount,
+    f.[Total Including Tax] AS GrossSales
+FROM Fact.Sale f;
