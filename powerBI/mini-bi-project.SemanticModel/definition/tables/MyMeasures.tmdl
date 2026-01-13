@@ -38,6 +38,11 @@ table MyMeasures
 		formatString: 0
 		lineageTag: da498630-e2a6-40f8-8256-60e39e3ec6b0
 
+	measure 'Avg Net Sales Per Day' = DIVIDE([Net Sales], [Quantity])
+		lineageTag: e39da2eb-aca5-4547-8c4f-a799982c8fad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition MyMeasures = m
 		mode: import
 		source =

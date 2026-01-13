@@ -63,6 +63,9 @@ table DimDate
 		lineageTag: 70ff555f-a7da-4f44-978f-bfd88c9f6ca5
 		summarizeBy: none
 		sourceColumn: DayOfWeekName
+		sortByColumn: DayOfWeekNumber
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
