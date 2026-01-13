@@ -10,7 +10,7 @@
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "lineClusteredColumnComboChart",
     "query": {
       "queryState": {
         "Category": {
@@ -49,8 +49,113 @@
               "nativeQueryRef": "Net Sales"
             }
           ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MyMeasures"
+                    }
+                  },
+                  "Property": "Avg Net Sales Per Day"
+                }
+              },
+              "queryRef": "MyMeasures.Avg Net Sales Per Day",
+              "nativeQueryRef": "Avg Net Sales Per Day"
+            }
+          ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DimDate"
+                  }
+                },
+                "Property": "DayOfWeekName"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "showSeries": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MyMeasures.Net Sales"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Day of Week Net Sales & Average Net Sales'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'8cff1ab0ab56b7c8eccc'"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }
