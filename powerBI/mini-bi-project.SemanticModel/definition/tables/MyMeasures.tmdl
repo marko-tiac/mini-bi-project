@@ -35,13 +35,46 @@ table MyMeasures
 			        [Net Sales LY]
 			    )
 			)
-		formatString: 0
+		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: da498630-e2a6-40f8-8256-60e39e3ec6b0
 
 	measure 'Avg Net Sales Per Day' = DIVIDE([Net Sales], [Quantity])
 		lineageTag: e39da2eb-aca5-4547-8c4f-a799982c8fad
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY Sanity Flag' = ```
+			
+			IF(
+			    ABS([YoY %]) > 1,
+			    "CHECK",
+			    "OK"
+			)
+			
+			```
+		lineageTag: bac0405a-21d4-4702-9af1-7f9c1ae9b808
+
+	measure 'Has LY' = ```
+			
+			IF(
+			    ISBLANK([Net Sales LY]),
+			    "NO LY",
+			    "OK"
+			)
+			
+			```
+		lineageTag: cd8289d0-3f6b-4f25-a4d2-a53776709009
+
+	measure 'Net Sales Total Check' = ```
+			
+			IF(
+			    [Net Sales] = CALCULATE([Net Sales], ALL(DimDate)),
+			    "TOTAL",
+			    "DETAIL"
+			)
+			
+			```
+		lineageTag: fd75d723-e7e4-45b6-b8ef-12a3bdbbbfd6
 
 	partition MyMeasures = m
 		mode: import

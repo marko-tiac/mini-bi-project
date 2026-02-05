@@ -1,0 +1,224 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "aa2c04ab37229d05effc",
+  "position": {
+    "x": 9.7180043383947936,
+    "y": 0,
+    "z": 0,
+    "height": 447.02819956616048,
+    "width": 969.02386117136655,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "MonthName"
+                }
+              },
+              "queryRef": "DimDate.MonthName",
+              "nativeQueryRef": "MonthName"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MyMeasures"
+                    }
+                  },
+                  "Property": "Net Sales"
+                }
+              },
+              "queryRef": "MyMeasures.Net Sales",
+              "nativeQueryRef": "Net Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MyMeasures"
+                    }
+                  },
+                  "Property": "Net Sales LY"
+                }
+              },
+              "queryRef": "MyMeasures.Net Sales LY",
+              "nativeQueryRef": "Net Sales LY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MyMeasures"
+                    }
+                  },
+                  "Property": "YoY %"
+                }
+              },
+              "queryRef": "MyMeasures.YoY %",
+              "nativeQueryRef": "YoY %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MyMeasures"
+                    }
+                  },
+                  "Property": "YoY Sanity Flag"
+                }
+              },
+              "queryRef": "MyMeasures.YoY Sanity Flag",
+              "nativeQueryRef": "YoY Sanity Flag"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MyMeasures"
+                    }
+                  },
+                  "Property": "Has LY"
+                }
+              },
+              "queryRef": "MyMeasures.Has LY",
+              "nativeQueryRef": "Has LY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MyMeasures"
+                    }
+                  },
+                  "Property": "Net Sales Total Check"
+                }
+              },
+              "queryRef": "MyMeasures.Net Sales Total Check",
+              "nativeQueryRef": "Net Sales Total Check"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f2a1c207f03dc34b73ad",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MyMeasures"
+              }
+            },
+            "Property": "Net Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3819f0ff8b5896a16eb8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MyMeasures"
+              }
+            },
+            "Property": "Net Sales LY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "364ebbe14a8d5729e5a1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MyMeasures"
+              }
+            },
+            "Property": "YoY %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c7aaf2fde1be71072826",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MyMeasures"
+              }
+            },
+            "Property": "YoY Sanity Flag"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f03c534d405a25119135",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MyMeasures"
+              }
+            },
+            "Property": "Has LY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7cab64f3343579e0b00c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MyMeasures"
+              }
+            },
+            "Property": "Net Sales Total Check"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9b7e58f6bdf4363ff470",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "MonthName"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

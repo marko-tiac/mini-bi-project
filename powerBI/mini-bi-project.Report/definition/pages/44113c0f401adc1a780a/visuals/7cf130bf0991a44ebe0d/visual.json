@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "7cf130bf0991a44ebe0d",
   "position": {
-    "x": 57.756097560975611,
-    "y": 44.487804878048777,
+    "x": 57.613882863340564,
+    "y": 44.425162689804772,
     "z": 0,
-    "height": 315.3170731707317,
-    "width": 770.34146341463418,
+    "height": 285.9869848156182,
+    "width": 779.52277657266814,
     "tabOrder": 2000
   },
   "visual": {
@@ -71,5 +71,37 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7ee399c2d1ee0ff9c258",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "MonthName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9953c1551c431bcf531c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MyMeasures"
+              }
+            },
+            "Property": "Net Sales"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
