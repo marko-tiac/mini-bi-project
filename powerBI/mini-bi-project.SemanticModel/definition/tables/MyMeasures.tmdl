@@ -2,9 +2,8 @@ table MyMeasures
 	lineageTag: ab776af6-2000-41e2-9309-1505e276dcf0
 
 	measure 'Net Sales' = SUM(FactSale[NetSales])
+		formatString: 0
 		lineageTag: d5dca21b-348a-49ed-9a9a-1bbb7ffa471a
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Gross Sales' = SUM(FactSale[GrossSales])
 		lineageTag: 5ef11ef7-e102-4fb2-94b6-8c2e632dca41
@@ -21,9 +20,8 @@ table MyMeasures
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Net Sales LY' = CALCULATE([Net Sales], SAMEPERIODLASTYEAR(DimDate[Date]))
+		formatString: 0
 		lineageTag: 56d92083-da71-4ef0-9e9a-2df915617773
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'YoY %' =
 			
@@ -75,6 +73,11 @@ table MyMeasures
 			
 			```
 		lineageTag: fd75d723-e7e4-45b6-b8ef-12a3bdbbbfd6
+
+	measure 'YoY Δ' = [Net Sales] - [Net Sales LY]
+		lineageTag: d2c19954-cd0f-4ab6-8dd3-c7cd6c2fd3e6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition MyMeasures = m
 		mode: import

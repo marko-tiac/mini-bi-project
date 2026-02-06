@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
   "name": "65028528ed7dbe8819b3",
   "position": {
     "x": 0,
@@ -192,65 +192,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "c06563a00b825eab6296",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "MyMeasures"
-              }
-            },
-            "Property": "Net Sales"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "9f381ccaa502bb2dd10d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "MyMeasures"
-              }
-            },
-            "Property": "Net Sales LY"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0d3207b4708706e86ced",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "MyMeasures"
-              }
-            },
-            "Property": "YoY %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "97da68f1e922e01e18c6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "MyMeasures"
-              }
-            },
-            "Property": "Quantity"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

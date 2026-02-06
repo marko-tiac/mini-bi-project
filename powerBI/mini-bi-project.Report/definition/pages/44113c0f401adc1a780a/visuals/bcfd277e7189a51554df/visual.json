@@ -1,19 +1,38 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "47be89ac3ee350ca4010",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "bcfd277e7189a51554df",
   "position": {
-    "x": 861.65853658536582,
-    "y": 44.487804878048777,
-    "z": 2000,
-    "height": 270.82926829268291,
-    "width": 418.34146341463412,
-    "tabOrder": 1000
+    "x": 264.63667820069207,
+    "y": 493.840830449827,
+    "z": 9002,
+    "height": 211.48788927335642,
+    "width": 750.726643598616,
+    "tabOrder": 9002
   },
   "visual": {
-    "visualType": "cardVisual",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
-        "Data": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimCustomer"
+                    }
+                  },
+                  "Property": "CustomerCategory"
+                }
+              },
+              "queryRef": "DimCustomer.CustomerCategory",
+              "nativeQueryRef": "CustomerCategory",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
           "projections": [
             {
               "field": {
@@ -23,25 +42,11 @@
                       "Entity": "MyMeasures"
                     }
                   },
-                  "Property": "Net Sales"
+                  "Property": "YoY Δ"
                 }
               },
-              "queryRef": "MyMeasures.Net Sales",
-              "nativeQueryRef": "Net Sales"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "MyMeasures"
-                    }
-                  },
-                  "Property": "Quantity"
-                }
-              },
-              "queryRef": "MyMeasures.Quantity",
-              "nativeQueryRef": "Quantity"
+              "queryRef": "MyMeasures.YoY Δ",
+              "nativeQueryRef": "YoY Δ"
             }
           ]
         }
@@ -56,7 +61,7 @@
                     "Entity": "MyMeasures"
                   }
                 },
-                "Property": "Net Sales"
+                "Property": "YoY Δ"
               }
             },
             "direction": "Descending"
